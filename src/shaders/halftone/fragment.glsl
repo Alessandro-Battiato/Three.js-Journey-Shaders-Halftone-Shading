@@ -40,6 +40,7 @@ void main()
     uv = mod(uv, 1.0);
 
     float point = distance(uv, vec2(0.5)); // render a Dot at the center of each cell
+    point = 1.0 - step(0.5, point);
 
     // Final color
     gl_FragColor = vec4(point, point, point, 1.0);
