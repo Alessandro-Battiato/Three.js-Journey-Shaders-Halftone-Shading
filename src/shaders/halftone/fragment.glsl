@@ -34,6 +34,8 @@ void main()
 
     // Halftone
     vec2 uv = gl_FragCoord.xy / uResolution;
+    uv *= 50.0;
+    uv = mod(uv, 1.0);
 
     // Final color
     gl_FragColor = vec4(uv, 1.0, 1.0);
