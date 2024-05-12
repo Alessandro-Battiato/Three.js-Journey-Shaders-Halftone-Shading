@@ -37,6 +37,7 @@ void main()
     vec3 direction = vec3(0.0, -1.0, 0.0);
     float low = - 0.8;
     float high = 1.5;
+    vec3 pointColor = vec3(1.0, 0.0, 0.0);
 
     float intensity = dot(normal, direction); // dot product
     intensity = smoothstep(low, high, intensity);
@@ -48,8 +49,10 @@ void main()
     float point = distance(uv, vec2(0.5)); // render a Dot at the center of each cell
     point = 1.0 - step(0.5 * intensity, point);
 
+    color = mix(color, pointColor, point); // if point is 0, we get the color (hence why at the beginning there are no dots) if it's 1 then you get a point
+
     // Final color
-    gl_FragColor = vec4(point, point, point, 1.0);
+    gl_FragColor = vec4(color, 1.0);
     #include <tonemapping_fragment>
     #include <colorspace_fragment>
 }
