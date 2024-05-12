@@ -33,8 +33,10 @@ void main()
     color *= light;
 
     // Halftone
+    float repetitions = 50.0;
+
     vec2 uv = gl_FragCoord.xy / uResolution.y; // now both x and y of fragCoords are divided by uResolution's y and thus fixes the squares issue
-    uv *= 50.0;
+    uv *= repetitions; // how many cells (or squares) we have vertically on each mesh
     uv = mod(uv, 1.0);
 
     // Final color
