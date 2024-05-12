@@ -33,7 +33,7 @@ void main()
     color *= light;
 
     // Halftone
-    vec2 uv = gl_FragCoord.xy / uResolution;
+    vec2 uv = gl_FragCoord.xy / uResolution.y; // now both x and y of fragCoords are divided by uResolution's y and thus fixes the squares issue
     uv *= 50.0;
     uv = mod(uv, 1.0);
 
